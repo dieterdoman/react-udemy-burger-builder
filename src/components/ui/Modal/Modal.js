@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Modal.module.css';
 import Auxiliary from '../../../hoc/Auxiliary';
 import Backdrop from "../Backdrop/Backdrop";
+import PropTypes from 'prop-types';
 
 const Modal = (props) => (
     <Auxiliary>
@@ -12,5 +13,10 @@ const Modal = (props) => (
         </div>
     </Auxiliary>
 );
+
+Modal.propType = {
+  show: PropTypes.bool.isRequired,
+  modalClosed: PropTypes.func.isRequired
+};
 
 export default Modal;

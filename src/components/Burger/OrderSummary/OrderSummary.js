@@ -1,6 +1,7 @@
 import React from 'react';
 import Auxiliary from '../../../hoc/Auxiliary';
 import Button from "../../ui/Button/Button";
+import PropTypes from 'prop-types';
 
 const OrderSummary = (props) => {
     const ingredientSummary = Object.keys(props.ingredients).map(ingredientKey => {
@@ -23,6 +24,13 @@ const OrderSummary = (props) => {
             <Button buttonType="Success" clicked={props.purchaseContinue}>CONTINUE</Button>
         </Auxiliary>
     );
+};
+
+OrderSummary.propTypes = {
+  ingredients: PropTypes.object.isRequired,
+  purchaseCanceled: PropTypes.func.isRequired,
+  purchaseContinue: PropTypes.func.isRequired,
+  price: PropTypes.number.isRequired
 };
 
 export default OrderSummary;
