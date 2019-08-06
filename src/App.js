@@ -2,13 +2,16 @@ import React from 'react';
 import Layout from './hoc/Layout/Layout'
 import BurgerBuilder from "./containters/BurgerBuilder/BurgerBuilder";
 import Checkout from "./containters/Checkout/Checkout";
+import {Route, Switch} from "react-router";
 
 function App() {
   return (
     <div>
         <Layout>
-            <BurgerBuilder />
-            <Checkout />
+            <Switch>
+                <Route path="/checkout" component={Checkout}/>
+                <Route path="/" exact component={BurgerBuilder}/>
+            </Switch>
         </Layout>
     </div>
   );
