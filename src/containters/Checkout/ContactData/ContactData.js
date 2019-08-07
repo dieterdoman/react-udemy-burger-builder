@@ -89,9 +89,12 @@ class ContactData extends Component {
                     ]
                 },
                 value: 'fastest',
-                displayValue: 'Shipping'
+                displayValue: 'Shipping',
+                validation: {},
+                valid: true
             }
         },
+        formIsValid: false,
         loading: false
     };
 
@@ -99,7 +102,7 @@ class ContactData extends Component {
         event.preventDefault();
         this.setState({loading: true});
         const formData = {};
-        for(let formElementId in this.state.orderForm) {
+        for (let formElementId in this.state.orderForm) {
             formData[formElementId] = this.state.orderForm[formElementId].value;
         }
         const order = {
@@ -140,12 +143,18 @@ class ContactData extends Component {
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
         updatedOrderForm[inputId] = updatedFormElement;
-        this.setState({orderForm: updatedOrderForm});
+
+        let formIsValid = true;
+        for (let inputId in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputId].valid && formIsValid;
+        }
+
+        this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid});
     };
 
     render() {
         const formElementsArray = [];
-        for(let key in this.state.orderForm) {
+        for (let key in this.state.orderForm) {
             formElementsArray.push({
                 id: key,
                 config: this.state.orderForm[key]
@@ -166,7 +175,7 @@ class ContactData extends Component {
                         valueDisplayType={element.config.displayValue}
                     />
                 ))}
-                <Button buttonType="Success">ORDER</Button>
+                <Button buttonType="Success" disabled={!this.state.formIsValid}>ORDER</Button>
             </form>
         );
         if (this.state.loading) {
