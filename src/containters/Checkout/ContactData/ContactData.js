@@ -78,8 +78,7 @@ class ContactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: 'fastest',
-                valid: true
+                value: 'fastest'
             }
         },
         loading: false
@@ -149,6 +148,8 @@ class ContactData extends Component {
                         elementConfig={element.config.elementConfig}
                         value={element.config.value}
                         changed={(event) => this.inputChangedHandler(event, element.id)}
+                        invalid={!element.config.valid}
+                        shouldValidate={element.config.validation}
                     />
                 ))}
                 <Button buttonType="Success">ORDER</Button>
