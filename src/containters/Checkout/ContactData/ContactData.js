@@ -19,7 +19,8 @@ class ContactData extends Component {
                     required: true
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                displayValue: 'Name'
             },
             street: {
                 elementType: 'input',
@@ -32,7 +33,8 @@ class ContactData extends Component {
                     required: true
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                displayValue: 'Street'
             },
             zipCode: {
                 elementType: 'input',
@@ -47,7 +49,8 @@ class ContactData extends Component {
                     maxLength: 5
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                displayValue: 'Zip code'
             },
             country: {
                 elementType: 'input',
@@ -60,7 +63,8 @@ class ContactData extends Component {
                     required: true
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                displayValue: 'Country'
             },
             email: {
                 elementType: 'input',
@@ -73,7 +77,8 @@ class ContactData extends Component {
                     required: true
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                displayValue: 'Email'
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -83,7 +88,8 @@ class ContactData extends Component {
                         {value: 'cheapest', displayValue: 'Cheapest'}
                     ]
                 },
-                value: 'fastest'
+                value: 'fastest',
+                displayValue: 'Shipping'
             }
         },
         loading: false
@@ -157,6 +163,7 @@ class ContactData extends Component {
                         invalid={!element.config.valid}
                         shouldValidate={element.config.validation}
                         touched={element.config.touched}
+                        valueDisplayType={element.config.displayValue}
                     />
                 ))}
                 <Button buttonType="Success">ORDER</Button>
