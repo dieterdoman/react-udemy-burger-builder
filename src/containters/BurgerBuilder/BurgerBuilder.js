@@ -25,13 +25,13 @@ class BurgerBuilder extends Component {
         error: false
     };
 
-    componentDidMount() {
-        axious.get('https://react-udemy-burger-build-5cf81.firebaseio.com/ingredients.json').then(response => {
-            this.setState({ingredients: response.data});
-        }).catch(error => {
-            this.setState({error: true});
-        });
-    };
+    // componentDidMount() {
+    //     axious.get('https://react-udemy-burger-build-5cf81.firebaseio.com/ingredients.json').then(response => {
+    //         this.setState({ingredients: response.data});
+    //     }).catch(error => {
+    //         this.setState({error: true});
+    //     });
+    // };
 
     addIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
