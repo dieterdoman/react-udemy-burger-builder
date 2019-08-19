@@ -1,9 +1,6 @@
 import {put, delay} from 'redux-saga/effects'
 import * as actions from '../actions/index';
 import axios from "axios";
-import {logout} from "../actions/index";
-import {authSuccess} from "../actions/index";
-import {checkAuthTimeout} from "../actions/index";
 
 export function* logoutSage(action) {
     yield localStorage.removeItem('token');
