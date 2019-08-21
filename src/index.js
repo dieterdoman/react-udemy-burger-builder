@@ -11,7 +11,7 @@ import thunk from 'redux-thunk';
 import orderReducer from './store/reducers/orders';
 import authReducer from './store/reducers/auth';
 import createSagaMiddleware from 'redux-saga';
-import {watchAll, watchBurgerBuilder} from "./store/sagas/index";
+import {watchAll, watchBurgerBuilder, watchOrder} from "./store/sagas/index";
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose : compose;
 
@@ -27,6 +27,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, s
 
 sagaMiddleware.run(watchAll);
 sagaMiddleware.run(watchBurgerBuilder);
+sagaMiddleware.run(watchOrder);
 
 const app = (
     <Provider store={store}>
