@@ -19,9 +19,10 @@ const Auth = React.lazy(() => {
 });
 
 const App = props => {
+    const {onTryAutoSignUp} = props;
     useEffect(() => {
-        props.onTryAutoSignUp();
-    }, [props]);
+        onTryAutoSignUp();
+    }, [onTryAutoSignUp]);
 
     let routes = (
         <Switch>
@@ -34,10 +35,10 @@ const App = props => {
     if (props.isAuthenticated) {
         routes = (
             <Switch>
-                <Route path="/checkout"  render={(props) => <Checkout {...props}/>}/>
+                <Route path="/checkout" render={(props) => <Checkout {...props}/>}/>
                 <Route path="/orders" render={(props) => <Orders {...props}/>}/>
                 <Route path="/logout" component={Logout}/>
-                <Route path="/auth"  render={(props) => <Auth {...props}/>}/>
+                <Route path="/auth" render={(props) => <Auth {...props}/>}/>
                 <Route path="/" exact component={BurgerBuilder}/>
                 <Redirect to="/"/>
             </Switch>
